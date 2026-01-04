@@ -212,7 +212,12 @@
             .footer-content { grid-template-columns: 1fr; text-align: center; }
             .social-icons { justify-content: center; }
             .service-info { max-height: 1000px; }
-        }
+    /* EL ARREGLO DE LA FLECHA AQUÍ: */
+    .back-to-top {
+        bottom: 90px !important;
+        right: 20px !important;
+    }
+} /* <--- Esta llave cierra TODO el bloque mobile */
         .back-to-top {
     position: fixed;
     bottom: 25px;
@@ -391,9 +396,10 @@
                 </div>
             </div>
         </div>
-        <div class="copyright">
-            © 2026 Digital Carmelo. Todos los derechos reservados.
-        </div>
+       <div class="copyright">
+    <p>Digital Carmelo&reg; es una marca registrada.</p>
+    <p style="margin-top: 5px; opacity: 0.8;">&copy; 2026 Todos los derechos reservados.</p>
+</div>
     </footer>
 <a href="#" class="back-to-top">
     <i class="fas fa-arrow-up"></i>
@@ -401,4 +407,5 @@
 
 </body>
 </html>
+
 
