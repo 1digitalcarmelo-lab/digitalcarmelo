@@ -3,825 +3,427 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Digital Carmelo</title>
+    <title>Digital Carmelo | Potenciador de Emprendedores</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@500&family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400;500&family=Caveat:wght@600&display=swap" rel="stylesheet">
     
     <style>
-        
+        /* --- VARIABLES Y RESET --- */
+        :root {
+            --naranja: #ff7f50;
+            --violeta-oscuro: #2e004f;
+            --violeta-medio: #4B0082;
+            --blanco-transparente: rgba(255, 255, 255, 0.1);
+            --texto-claro: #f4f4f4;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
         
         body {
             font-family: 'Poppins', sans-serif;
-            color: #e0e0e0;
-            /* Degradado: Naranja sutil en la parte superior, transición al Violeta que cubre el resto */
-            background: linear-gradient(
-                to bottom,
-                #ff7f50 0%,
-                #4B0082 20%,
-                #4B0082 100%
-            );
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
-            min-height: 100vh;
+            color: var(--texto-claro);
+            background: radial-gradient(circle at top, #4B0082 0%, #1a0033 100%);
+            line-height: 1.6;
         }
-        /* --- ESTILOS DEL MENÚ DE NAVEGACIÓN --- */
+
+        /* --- NAVEGACIÓN --- */
         .main-nav {
+            position: sticky;
+            top: 0;
             width: 100%;
-            background-color: rgba(0, 18, 58, 0.9); 
+            background: rgba(26, 0, 51, 0.95);
+            backdrop-filter: blur(10px);
             padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            z-index: 2000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
         .main-nav ul {
-            list-style: none; 
+            list-style: none;
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 30px;
         }
 
         .main-nav ul li a {
-            text-decoration: none; 
-            color: #e0e0e0; 
-            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            color: var(--texto-claro);
             font-weight: 500;
-            font-size: 1.1em;
-            padding: 10px 15px;
-            transition: color 0.3s ease;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
         }
 
-        .main-nav ul li a:hover {
-            color: #ff7f50; 
-        }
-        /* --- ESTILOS DEL LOGO/HEADER (Ajustados para más cohesión) --- */
+        .main-nav ul li a:hover { color: var(--naranja); }
 
+        /* --- HEADER / LOGO --- */
         header {
-            margin-top: 40px;
-            margin-bottom: 40px;
-            padding: 20px;
-            width: 100%;
+            padding: 60px 20px;
+            text-align: center;
         }
 
         .logo-container {
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 1rem; /* ✅ MÁS PEGADO AL TEXTO */
-            padding: 30px; 
-            margin-bottom: 40px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
-    
 
         .logo-icon {
-            width: 200px; 
+            width: 150px;
             height: auto;
+            filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
         }
 
-        .logo-texts {
-            display: flex;
-            flex-direction: column; 
-            align-items: flex-start; 
-            text-align: left; 
-            /* ✅ ELIMINAMOS EL PADDING PARA PEGAR AL LOGO */
-        }
-
+        .logo-texts { text-align: left; }
 
         .logo-texts h1 {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 700; 
-            font-size: 5.5em; 
-            line-height: 0.85; 
-            color: #e0e0e0;
+            font-size: 4.5rem;
+            line-height: 0.9;
             text-transform: uppercase;
-            letter-spacing: 1px;
             margin: 0;
-            padding: 0;
-        }
-        
-        .logo-texts h1 span {
-            display: block; 
         }
 
-        .logo-texts p { 
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-            font-size: 1.5em; 
-            color: #e0e0e0;
-            text-transform: uppercase;
-            margin-top: 5px; /* ✅ MENOS ESPACIO ENTRE NOMBRE Y LEMA */
-            letter-spacing: 2px; 
-        }
-        /* --- NUEVA SECCIÓN: HISTORIA (Estilo Cursivo) --- */
+        .logo-texts h1 span { display: block; }
+        .logo-texts h1 span:first-child { color: var(--naranja); }
 
-        .our-story {
-            width: 90%;
-            max-width: 900px;
-            margin: 0 auto 60px auto; 
+        .logo-texts p {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            color: #ccc;
+            margin-top: 10px;
+        }
+
+        /* --- SECCIONES GENERALES --- */
+        .main-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section { margin-bottom: 100px; }
+
+        .info {
+            background: var(--blanco-transparente);
+            padding: 50px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.05);
             text-align: center;
-            padding: 20px;
         }
 
+        .info h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--naranja);
+            margin-bottom: 20px;
+        }
+
+        /* --- HISTORIA (CURSIVA) --- */
         .our-story h2 {
-            font-family: 'Caveat', cursive; /* Fuente Cursiva */
-            font-weight: 600;
-            font-size: 3.5em; 
-            color: #ff7f50; /* Color Naranja */
-            margin-bottom: 25px;
-            line-height: 1.2;
+            font-family: 'Caveat', cursive;
+            font-size: 3.2rem;
+            color: var(--naranja);
+            line-height: 1.1;
+            margin-bottom: 30px;
         }
 
         .our-story p {
-            font-family: 'Tangerine', cursive; /* Fuente Cursiva */
-            font-size: 2.1em; /* Un buen tamaño para destacar */
-            line-height: 1.5;
-            color: #e0e0e0;
-            margin-bottom: 15px;
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
         }
 
-        /* --- ESTILOS DEL CONTENEDOR PRINCIPAL (MAIN WRAPPER) --- */
-        .main-wrapper {
-            max-width: 1200px; 
-            width: 100%; 
-            padding: 0 20px;
-        }
-        /* --- ESTILOS DE LAS SECCIONES INFO (Quiénes Somos, Contacto, Detalles) --- */
-        .info {
-            width: 100%; 
-            max-width: 800px; 
-            margin: 60px auto; 
-            text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 40px;
-            backdrop-filter: blur(8px);
-        }
-        
-        .info h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #ff7f50;
-        }
-        
-        .info p {
-            font-family: 'Poppins', sans-serif; /* Aseguramos que el resto del texto no sea cursivo */
-            font-size: 1.1em;
-            line-height: 1.6;
-        }
-
-        .contacto-info p a {
-            color: #ff7f50;
-            text-decoration: none;
-        }
-        /* --- ESTILOS DE LA SECCIÓN SERVICIOS --- */
-
-
-        .servicios-container {
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto 50px auto; 
-            text-align: center;
-        }
-        
-        .servicios-container h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            color: #ff7f50;
-        }
-        
+        /* --- SERVICIOS GRID --- */
         .servicios {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        /* Media Query para 2 columnas en pantallas medianas y grandes */
-        @media (min-width: 768px) {
-            .servicios {
-                grid-template-columns: repeat(2, 1fr); 
-                gap: 40px;
-            }
-        }
-        
-        /* Media Query para forzar 2x2 en pantallas MUY grandes */
-        @media screen and (min-width: 1200px) {
-            .servicios {
-                grid-template-columns: repeat(2, 1fr); 
-                max-width: 800px; 
-                margin: 0 auto;
-            }
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
         }
 
         .servicio {
-            background: rgba(255, 255, 255, 0.15); 
+            background: rgba(255,255,255,0.05);
+            padding: 40px 20px;
             border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: 0.4s;
+            border: 1px solid transparent;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .servicio:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-10px);
+            border-color: var(--naranja);
         }
 
-        .servicio h3 {
-            margin-bottom: 10px;
-            font-size: 1.4em;
+        .servicio i {
+            font-size: 2.5rem;
+            color: var(--naranja);
+            margin-bottom: 20px;
         }
 
-        .servicio p {
-            font-size: 0.95em;
-            opacity: 0.85;
-        }
-        
-        .servicio a {
-            text-decoration: none; 
-            color: inherit; 
-            display: block; 
-        }
+        .servicio h3 { margin-bottom: 15px; font-family: 'Montserrat'; }
 
-        .servicio a:hover h3 {
-            text-decoration: underline; 
-            color: #ff7f50; 
-        }
-        
-        /* --- ESTILOS PARA LOS DETALLES DE SERVICIOS --- */
-        #detalles-servicios-main {
-            background: none;
-            backdrop-filter: none;
-            padding: 0;
-            box-shadow: none;
-            border-radius: 0;
-            max-width: 900px; 
-        }
-        
+        /* --- DETALLES DE SERVICIOS --- */
         .detalle-servicio {
-            background: #ffffff; 
-            border-left: 5px solid #ff7f50; 
-            padding: 25px;
-            margin: 30px 0;
-            text-align: left; 
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            background: white;
+            color: #333;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: left;
+            border-left: 8px solid var(--naranja);
         }
 
         .detalle-servicio h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.6em;
-            color: #00123a;
-            margin-bottom: 15px;
-            padding-left: 10px;
-        }
-        
-        .detalle-servicio h3 i {
-            color: #4B0082; 
-            margin-right: 10px;
-            font-size: 1.2em;
-        }
-
-        .detalle-servicio p, .detalle-servicio ul {
-            color: #555555;
-            font-family: 'Poppins', sans-serif; /* Aseguramos que el resto del texto no sea cursivo */
-            font-size: 1em;
-            line-height: 1.6;
-            margin-bottom: 10px;
+            color: var(--violeta-medio);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .detalle-servicio ul {
             list-style: none;
-            padding-left: 20px;
+            margin-top: 15px;
         }
 
         .detalle-servicio ul li {
-            padding-left: 15px;
+            margin-bottom: 10px;
+            padding-left: 25px;
             position: relative;
-            margin-bottom: 5px;
         }
 
-        .detalle-servicio ul li:before {
-            content: "\f00c"; 
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            color: #4B0082; 
+        .detalle-servicio ul li::before {
+            content: '✔';
             position: absolute;
             left: 0;
-        }
-        
-        /* --- BOTÓN VOLVER ARRIBA (Back-to-Top) --- */
-        #back-to-top {
-            position: fixed;
-            bottom: 25px; 
-            right: 25px; 
-            opacity: 0; 
-            visibility: hidden; 
-            transition: opacity 0.3s, visibility 0.3s; 
-            background-color: #ff7f50; 
-            color: #00123a; 
-            border-radius: 50%; 
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5em;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-            text-decoration: none;
-            z-index: 1000; 
+            color: var(--naranja);
+            font-weight: bold;
         }
 
-        #back-to-top:hover {
-            background-color: #4B0082; 
-            color: #e0e0e0; 
-            transform: scale(1.05);
-        }
-        
-        /* --- ESTILOS DEL FOOTER --- */
+        /* --- FOOTER --- */
         footer {
-            width: 100%;
-            margin-top: 80px; 
-            padding: 40px 20px;
-            background-color: #00123A; 
-            color: #e0e0e0;
-            text-align: center;
-            border-top: 5px solid #ff7f50; 
+            background: #0a001a;
+            padding: 80px 20px 40px;
+            margin-top: 50px;
+            border-top: 4px solid var(--naranja);
         }
 
         .footer-content {
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: space-around; 
-            max-width: 1200px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
             margin: 0 auto;
-            text-align: left; 
-        }
-
-        .footer-col {
-            padding: 15px;
-            min-width: 250px; 
-            margin-bottom: 20px;
         }
 
         .footer-col h4 {
-            color: #ff7f50; 
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .tagline {
-            font-size: 0.9em;
-            opacity: 0.8;
-            margin-bottom: 15px;
-        }
-        
-        /* Estilos para los enlaces de navegación */
-        .links-col ul {
-            list-style: none;
-            padding: 0;
+            color: var(--naranja);
+            margin-bottom: 25px;
+            text-transform: uppercase;
         }
 
-        .links-col ul li a {
-            color: #e0e0e0;
-            text-decoration: none;
-            line-height: 2;
-            font-size: 0.95em;
-            transition: color 0.3s;
-        }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: #aaa; text-decoration: none; transition: 0.3s; }
+        .footer-col ul li a:hover { color: white; padding-left: 5px; }
 
-        .links-col ul li a:hover {
-            color: #4B0082; 
-        }
+        .social-icons { margin-top: 20px; display: flex; gap: 20px; }
+        .social-icons a { font-size: 1.5rem; color: white; transition: 0.3s; }
+        .social-icons a:hover { color: var(--naranja); transform: scale(1.2); }
 
-        /* Estilos para la información de contacto */
-        .contact-col p {
-            line-height: 1.8;
-            font-size: 0.95em;
-        }
-
-        .contact-col i {
-            color: #ff7f50;
-            margin-right: 10px;
-        }
-
-        /* Estilos de los iconos sociales */
-        .social-icons {
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            color: #e0e0e0;
-            font-size: 1.5em;
-            margin-right: 15px;
-            transition: color 0.3s;
-        }
-
-        .social-icons a:hover {
-            color: #ff7f50; 
-        }
-
-        /* Media Query para centrar columnas en móvil */
-        @media (max-width: 768px) {
-            .footer-col {
-                text-align: center;
-                min-width: 100%;
-            }
-            .links-col ul {
-                display: inline-block;
-            }
-            .footer-logo-title {
-                justify-content: center; 
-            }
-            .footer-col.logo-col {
-                text-align: center;
-            }
-        }
-        /* --- ESTILOS ADICIONALES PARA EL LOGO Y TEXTO DEL FOOTER --- */
-
-        .footer-logo-title {
+        /* --- BOTON SUBIR --- */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--naranja);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            justify-content: flex-start; 
-            margin-bottom: 20px;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 3000;
         }
 
-        .footer-col.logo-col {
-            text-align: left; 
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .logo-container { flex-direction: column; text-align: center; }
+            .logo-texts { text-align: center; }
+            .logo-texts h1 { font-size: 3rem; }
+            .main-nav ul { gap: 15px; font-size: 0.8rem; }
+            .info { padding: 30px 20px; }
+            .our-story h2 { font-size: 2.2rem; }
         }
-
-        .footer-col.logo-col h4 {
-            color: #e0e0e0; 
-            font-size: 1.6em; 
-            margin-bottom: 5px;
-            margin-left: 10px;
-            padding: 0;
-        }
-
-        .footer-col.logo-col .tagline {
-            margin-top: 0;
-            margin-left: 10px;
-            font-size: 0.85em;
-            opacity: 0.9;
-        }
-
-        .logo-footer {
-            width: 60px; 
-            height: auto;
-            margin-bottom: 0;
-        }
-        /* --- ESTILOS PARA LA SECCIÓN INFERIOR DEL FOOTER (COPYRIGHT) --- */
-
-        .footer-bottom {
-            width: 100%;
-            text-align: center; 
-            padding-top: 25px; 
-            padding-bottom: 25px; 
-            margin-top: 40px; 
-        }
-
-        .copyright {
-            font-size: 0.85em;
-            opacity: 0.8; 
-            margin: 0; 
-        }
-        /* ============================================== */
-/* --- MEDIA QUERIES PARA DISPOSITIVOS MÓVILES --- */
-/* ============================================== */
-
-@media (max-width: 768px) {
-    /* 1. AJUSTES EN EL HEADER (LOGO Y TEXTOS) */
-    
-    .logo-container {
-        flex-direction: column; /* Apila el logo y el texto uno encima del otro */
-        padding: 10px;
-        gap: 0.5rem; /* Reduce el espacio general */
-    }
-
-    .logo-icon {
-       max-width: 120px; /* ✅ ANCHO MÁXIMO DEL LOGO EN MÓVIL */
-        height: auto;      /* ✅ ALTURA AUTOMÁTICA PARA MANTENER PROPORCIONES */
-        object-fit: contain; /* ✅ ASEGURA QUE EL LOGO SE VEA COMPLETO DENTRO DE SU ESPACIO */
-        margin-bottom: 5px; /* ✅ PEQUEÑO MARGEN PARA SEPARAR DEL TEXTO INFERIOR */
-    }
-
-    .logo-texts {
-        align-items: center; /* Centra el texto debajo del logo */
-        text-align: center;
-    }
-
-    .logo-texts h1 {
-        font-size: 3em; /* Reduce el tamaño del nombre */
-        line-height: 1;
-    }
-    
-    .logo-texts p {
-        font-size: 1.1em; /* Reduce el tamaño del lema */
-        letter-spacing: 1px;
-    }
-    
-    /* 2. AJUSTES EN LA NAVEGACIÓN */
-    .main-nav ul {
-        gap: 15px; /* Reduce el espacio entre ítems */
-        padding: 0 10px;
-        flex-wrap: wrap; /* Permite que los ítems salten de línea */
-    }
-    
-    .main-nav ul li a {
-        font-size: 0.9em; /* Reduce el tamaño de la letra del menú */
-        padding: 8px 10px;
-    }
-    
-    /* 3. AJUSTES EN LA SECCIÓN DE HISTORIA CURSIVA */
-    .our-story {
-        margin-bottom: 40px;
-        padding: 0 10px;
-    }
-    
-    .our-story h2 {
-        font-size: 2.2em; 
-        line-height: 1.3;
-    }
-
-    .our-story p {
-        font-size: 1.5em; 
-    }
-    
-    /* 4. AJUSTES EN LAS SECCIONES DE INFORMACIÓN */
-    .info {
-        margin: 40px 10px;
-        padding: 25px;
-    }
-    
-    .info h2 {
-        font-size: 2em; 
-    }
-    
-    .info p {
-        font-size: 1em;
-    }
-
-    /* 5. AJUSTES EN SERVICIOS (Asegura que los cuadros se apilen) */
-    .servicios {
-        grid-template-columns: 1fr; /* Fuerza una sola columna */
-        gap: 15px; 
-    }
-    
-    .servicio h3 {
-        font-size: 1.2em;
-    }
-    
-    .servicio p {
-        font-size: 0.9em;
-    }
-    
-    /* 6. AJUSTES EN LOS DETALLES DE SERVICIOS */
-    .detalle-servicio {
-        padding: 15px;
-    }
-
-    .detalle-servicio h3 {
-        font-size: 1.3em;
-    }
-    
-    .detalle-servicio p, .detalle-servicio ul {
-        font-size: 0.9em;
-    }
-    
-    /* 7. AJUSTES EN EL FOOTER */
-    .footer-content {
-        flex-direction: column; /* Apila las columnas del footer */
-        align-items: center;
-        text-align: center;
-    }
-    
-    .footer-col {
-        min-width: 100%;
-        text-align: center;
-        padding: 10px 0;
-    }
-    
-    .footer-logo-title {
-        justify-content: center; /* Centra el logo en el footer */
-    }
-}
     </style>
 </head>
 
-<body id="top"> 
-    
-    <a href="#top" id="back-to-top" title="Volver al Inicio">
-        <i class="fas fa-arrow-up"></i> 
-    </a>
-    
+<body>
+
     <nav class="main-nav">
         <ul>
-            <li><a href="#nuestra-historia">Nuestra Historia</a></li>
-            <li><a href="#quienes-somos">Quiénes Somos</a></li>
+            <li><a href="#nuestra-historia">Historia</a></li>
             <li><a href="#servicios-section">Servicios</a></li>
+            <li><a href="#quienes-somos">Nosotros</a></li>
             <li><a href="#contacto-footer">Contacto</a></li>
         </ul>
     </nav>
-    
+
     <header>
-    <div class="logo-container">
-        <img src="logo.png" alt="Logo Digital Carmelo" class="logo-icon"> 
-        <div class="logo-texts">
-            <h1><span>Digital</span> <span>Carmelo</span></h1>
-            <p>Potenciador de emprendedores</p>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo Digital Carmelo" class="logo-icon"> 
+            <div class="logo-texts">
+                <h1><span>Digital</span> <span>Carmelo</span></h1>
+                <p>Potenciador de emprendedores</p>
+            </div>
         </div>
-    </div> </header>
+    </header>
 
     <main class="main-wrapper">
         
-        <section id="nuestra-historia" class="our-story">
-            <h2>
-                "Todo nació de una idea simple: <br>
-                Hacerle la vida digital más fácil a otros emprendedores."
-            </h2>
-            <p>
-                Sabemos lo que es empezar desde cero, sin tiempo o recursos para el diseño. 
-                <br>
-                Por eso, creamos Digital Carmelo: soluciones digitales <strong>prácticas, accesibles y listas para usar</strong>, para que tú solo te concentres en vender.
-            </p>
+        <section id="nuestra-historia" class="our-story" style="text-align: center;">
+            <h2>"Todo nació de una idea simple: <br> Hacerle la vida digital más fácil a otros."</h2>
+            <p>Sabemos lo que es empezar desde cero. Creamos soluciones <strong>prácticas, accesibles y listas para usar</strong> para que tú solo te concentres en vender.</p>
         </section>
 
-
-        <section id="quienes-somos" class="info">
-            <h2>Quiénes somos</h2>
-            <p>Somos Digital Carmelo, un equipo apasionado por impulsar emprendedores mediante diseño digital, creatividad e innovación.</p>
-        </section>
-
-        <section id="servicios-section" class="servicios-container">
-            <h2>Nuestros Servicios</h2>
-            <div class="servicios">
-                
-                <div class="servicio">
-                    <i class="fas fa-envelope-open-text service-icon"></i> 
-                    <a href="#detalles-invitaciones"><h3>Invitaciones digitales</h3></a> 
-                    <p>Diseños personalizados para tus eventos. ¡Haz que cada invitación sea única!</p>
+        <section id="servicios-section">
+            <div class="info">
+                <h2>Nuestros Servicios</h2>
+                <div class="servicios">
+                    <a href="#detalles-invitaciones" class="servicio">
+                        <i class="fas fa-envelope-open-text"></i>
+                        <h3>Invitaciones</h3>
+                        <p>Diseños únicos para tus eventos especiales.</p>
+                    </a>
+                    <a href="#detalles-sublimacion" class="servicio">
+                        <i class="fas fa-mug-hot"></i>
+                        <h3>Sublimación</h3>
+                        <p>Archivos listos para imprimir en alta calidad.</p>
+                    </a>
+                    <a href="#detalles-png" class="servicio">
+                        <i class="fas fa-file-image"></i>
+                        <h3>PNGs</h3>
+                        <p>Imágenes sin fondo listas para tus redes.</p>
+                    </a>
+                    <a href="#detalles-logotipos" class="servicio">
+                        <i class="fas fa-crown"></i>
+                        <h3>Logotipos</h3>
+                        <p>Tu identidad visual profesional y memorable.</p>
+                    </a>
                 </div>
-                
-                <div class="servicio">
-                    <i class="fas fa-mug-hot service-icon"></i>
-                    <a href="#detalles-sublimacion"><h3>Diseños para sublimaciones</h3></a>
-                    <p>Transforma tus ideas en productos impresos con diseños de calidad.</p>
-                </div>
-                
-                <div class="servicio">
-                    <i class="fas fa-file-image service-icon"></i>
-                    <a href="#detalles-png"><h3>PNGs personalizados</h3></a>
-                    <p>Recibe imágenes en formato PNG adaptadas a tus necesidades.</p>
-                </div>
-                
-                <div class="servicio">
-                    <i class="fas fa-crown service-icon"></i> 
-                    <a href="#detalles-logotipos"><h3>Diseños de Logotipos</h3></a>
-                    <p>Creamos la identidad visual de tu marca: un logotipo profesional y memorable.</p>
-                </div>
-                
             </div>
         </section>
-        <section id="detalles-servicios-main" class="info">
-            <h2>Detalles y Procesos</h2>
-            <p style="margin-bottom: 40px; color: #e0e0e0;">Conoce el alcance de nuestros diseños y cómo podemos potenciar tu emprendimiento.</p>
 
+        <section id="detalles-servicios-main">
             <div id="detalles-invitaciones" class="detalle-servicio">
-                <h3><i class="fas fa-envelope-open-text"></i> Invitaciones Digitales | Elegancia y Conveniencia</h3>
-                <p>Creamos diseños personalizados que se adaptan a la temática de tu evento. La <strong>conveniencia digital</strong> es nuestra prioridad: listas para enviar por WhatsApp o mail.</p>
+                <h3><i class="fas fa-envelope-open-text"></i> Invitaciones Digitales</h3>
+                <p>Listas para enviar por WhatsApp o mail. Olvídate del papel y ahorra tiempo.</p>
                 <ul>
-                    <li><strong>Diseño en Alta Resolución:</strong> Archivos optimizados, sin pixelación en ningún dispositivo.</li>
-                    <li><strong>Temática Personalizada:</strong> Cumpleaños, bautismos, casamientos, eventos corporativos.</li>
-                    <li><strong>Valor Agregado (Opcional):</strong> Opciones con <strong>animación, música o un mapa interactivo</strong> (consultar costo extra).</li>
-                    <li><strong>Tiempos:</strong> Entrega del primer borrador en <strong>24 horas</strong> una vez confirmados los datos.</li>
+                    <li>Alta resolución garantizada.</li>
+                    <li>Temáticas 100% personalizadas.</li>
+                    <li>Opciones interactivas con mapas o música.</li>
                 </ul>
             </div>
-            
+
             <div id="detalles-sublimacion" class="detalle-servicio">
-                <h3><i class="fas fa-tshirt"></i> Diseños para Sublimación | Archivos listos para Imprimir</h3>
-                <p>Proveemos los <strong>archivos maestros</strong> listos para la transferencia térmica. Ideal para imprentas o vendedores de <strong>merchandising</strong> que buscan optimizar el tiempo de producción.</p>
+                <h3><i class="fas fa-tshirt"></i> Diseños para Sublimación</h3>
+                <p>Archivos optimizados para tazas, remeras y más. Formatos profesionales (CMYK).</p>
                 <ul>
-                    <li><strong>Archivos Vectoriales y/o en Alta Calidad:</strong> Formatos adecuados para tazas, remeras, gorras y más, asegurando la escala perfecta.</li>
-                    <li><strong>Asesoría Técnica:</strong> Garantizamos el uso del perfil de color adecuado (<strong>CMYK</strong>) para una reproducción fiel en la prensa.</li>
-                    <li><strong>Múltiples Mockups:</strong> Visualización previa en varios productos para una mejor comercialización.</li>
-                    <li><strong>Soporte de Formato:</strong> Archivos listos para tu software de sublimación.</li>
+                    <li>Vectores listos para imprimir.</li>
+                    <li>Mockups de regalo para mostrar a tus clientes.</li>
                 </ul>
             </div>
-            
+
             <div id="detalles-png" class="detalle-servicio">
-                <h3><i class="fas fa-file-image"></i> PNG Personalizados | Transparencia Profesional para tus Redes</h3>
-                <p>El formato PNG es esencial si necesitas imágenes con <strong>fondo transparente</strong>. Usamos este servicio para crear recursos visuales que puedes superponer en tus fotos, videos y publicaciones.</p>
+                <h3><i class="fas fa-file-image"></i> PNG Personalizados</h3>
+                <p>Recursos visuales con transparencia para superponer en tus fotos y videos.</p>
                 <ul>
-                    <li><strong>Optimización de Fondo:</strong> Eliminación de fondos complejos o imperfecciones en el recorte.</li>
-                    <li><strong>Diseño de Elementos:</strong> Creación de <strong>iconos, stickers o assets gráficos</strong> específicos para tu emprendimiento.</li>
-                    <li><strong>Uso Comercial Incluido:</strong> Recibe el archivo con licencia para ser usado en todos tus canales.</li>
-                    <li><strong>Alta Calidad Garantizada:</strong> Archivos optimizados sin pérdida de calidad.</li>
+                    <li>Recorte perfecto sin bordes blancos.</li>
+                    <li>Ideal para stickers y marcas de agua.</li>
                 </ul>
             </div>
 
             <div id="detalles-logotipos" class="detalle-servicio">
-                <h3><i class="fas fa-gem"></i> Diseño de Logotipos y Branding | Identidad Sólida para Crecer</h3>
-                <p>Creamos la <strong>identidad visual</strong> de tu marca desde cero. Un logotipo profesional es la base para conectar con tu público y diferenciarte de la competencia.</p>
+                <h3><i class="fas fa-gem"></i> Logotipos y Branding</h3>
+                <p>La base de tu marca. Un logo profesional que transmite confianza.</p>
                 <ul>
-                    <li><strong>Proceso Creativo:</strong> Presentación de <strong>3 propuestas iniciales</strong> basadas en tu <strong>briefing</strong>.</li>
-                    <li><strong>Versatilidad:</strong> Entrega del logo en múltiples formatos (<strong>PNG, JPG, Vectoriales .AI/EPS</strong>) para cualquier aplicación.</li>
-                    <li><strong>Propuesta de Color:</strong> Definición de la paleta de colores corporativos.</li>
-                    <li><strong>Asesoría:</strong> Indicaciones para un <strong>uso correcto</strong> en diferentes fondos y tamaños.</li>
+                    <li>3 propuestas iniciales de diseño.</li>
+                    <li>Entrega en formatos editables (.AI, .PNG, .JPG).</li>
                 </ul>
             </div>
-
         </section>
-        <section id="dirigido-a" class="info">
-        <h2>¿Para Quién es Digital Carmelo?</h2>
-        <p>Nuestro enfoque está 100% en el emprendedor que da sus primeros pasos o que busca profesionalizar su marca sin grandes inversiones.</p>
-        <p style="margin-top: 20px;">
-            Si eres un <strong>vendedor de merchandising</strong>, <strong>organizador de eventos</strong>, <strong> un pequeño negocio de redes sociales</strong> o <strong> un nuevo profesional independiente</strong></strong>, nuestros servicios de diseño rápido y efectivo están pensados para ti.
-        </p>
-        <p style="margin-top: 20px; color: #ff7f50;">
-            ¡Te ayudamos a dar el salto de calidad que necesitas!
-        </p>
-    </section>
-        
+
+        <section id="quienes-somos" class="info">
+            <h2>¿Quiénes somos?</h2>
+            <p>Somos Digital Carmelo, un equipo apasionado por impulsar a los que recién arrancan con creatividad e innovación. Tu éxito es nuestro motor.</p>
+        </section>
+
     </main>
 
     <footer id="contacto-footer">
-
-    <div class="footer-content">
-        
-        <div class="footer-col logo-col">
-            <div class="footer-logo-title">
-                <img src="logo.png" alt="Digital Carmelo Logo" class="logo-footer"> 
-                <div class="footer-texts">
-                    <h4>Digital Carmelo</h4>
-                    <p class="tagline">Potenciador de Emprendedores</p>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Digital Carmelo</h4>
+                <p style="color: #888;">Potenciador de Emprendedores</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/digitalcarmelo/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/541134364468" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
-        </div> 
-        <div class="footer-col links-col">
-            <h4>Navegación Rápida</h4>
-            <ul>
-                <li><a href="#nuestra-historia">Nuestra Historia</a></li>
-                <li><a href="#quienes-somos">Quiénes Somos</a></li>
-                <li><a href="#servicios-section">Nuestros Servicios</a></li>
-                <li><a href="#detalles-servicios-main">Detalles y Procesos</a></li> 
-            </ul>
-        </div>
-        <div class="footer-col contact-col">
-            <h4>Contacto Directo</h4>
-            <p>
-                <i class="fas fa-envelope"></i> 1digitalcarmelo@gmail.com
-            </p>
-            <p>
-                <i class="fas fa-phone"></i> +54 11 3436 4468
-            </p>
-            <div class="social-icons">
-                <a href="https://www.instagram.com/digitalcarmelo/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/DigitalCarmelo" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://wa.me/541134364468" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <div class="footer-col">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="#top">Inicio</a></li>
+                    <li><a href="#servicios-section">Servicios</a></li>
+                    <li><a href="#quienes-somos">Nosotros</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <p><i class="fas fa-envelope" style="color:var(--naranja)"></i> 1digitalcarmelo@gmail.com</p>
+                <p><i class="fas fa-phone" style="color:var(--naranja)"></i> +54 11 3436 4468</p>
             </div>
         </div>
-        </div> 
-    <div class="footer-bottom">
-        <p class="copyright">© 2025 Digital Carmelo — Todos los derechos reservados.</p>
-    </div>
-    
-</footer>
+        <div style="text-align: center; margin-top: 50px; opacity: 0.5; font-size: 0.8rem;">
+            © 2026 Digital Carmelo — Diseñado para crecer.
+        </div>
+    </footer>
+
+    <a href="#top" id="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
     <script>
-        // Obtiene el elemento del botón
-        var mybutton = document.getElementById("back-to-top");
-
-        // Define la distancia de scroll (300px) para mostrar el botón
-        var scrollTrigger = 300; 
-
-        // Función que muestra u oculta el botón
-        function scrollFunction() {
-            // Revisa si el desplazamiento de la página es mayor a scrollTrigger
-            if (document.body.scrollTop > scrollTrigger || document.documentElement.scrollTop > scrollTrigger) {
-                // Si es mayor, lo hace visible
-                mybutton.style.opacity = "1";
-                mybutton.style.visibility = "visible";
+        const btn = document.getElementById("back-to-top");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+                btn.style.opacity = "1";
+                btn.style.visibility = "visible";
             } else {
-                // Si es menor, lo oculta
-                mybutton.style.opacity = "0";
-                mybutton.style.visibility = "hidden";
+                btn.style.opacity = "0";
+                btn.style.visibility = "hidden";
             }
-        }
-
-        // Asigna la función al evento de scroll de la ventana
-        window.onscroll = function() {scrollFunction()};
+        };
     </script>
-    
 </body>
 </html>
