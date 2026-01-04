@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Digital Carmelo | Agencia Digital para Emprendedores</title>
+    <title>Digital Carmelo | Potenciador de Emprendedores</title>
+    
+    <link rel="icon" href="logo.png" type="image/png">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@300;400;500&family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@300;400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -31,126 +33,123 @@
         /* --- NAVEGACIÓN --- */
         .main-nav {
             position: sticky; top: 0; width: 100%;
-            background: rgba(13, 0, 26, 0.9);
+            background: rgba(13, 0, 26, 0.96);
             backdrop-filter: blur(15px);
-            padding: 15px 0; z-index: 2000;
-            border-bottom: 1px solid rgba(255,127,80,0.2);
+            padding: 12px 0; z-index: 2000;
+            border-bottom: 1px solid rgba(255,127,80,0.1);
         }
-        .main-nav ul { list-style: none; display: flex; justify-content: center; gap: 30px; }
+        .main-nav ul { 
+            list-style: none; display: flex; justify-content: center; 
+            gap: 15px; padding: 0 10px;
+        }
         .main-nav ul li a {
             text-decoration: none; color: var(--texto-claro);
-            font-weight: 500; font-size: 0.85rem;
-            text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
+            font-weight: 500; font-size: 0.75rem;
+            text-transform: uppercase;
         }
-        .main-nav ul li a:hover { color: var(--naranja); }
 
-        /* --- HEADER --- */
-        header { padding: 80px 20px 40px; text-align: center; }
-        .logo-container { 
-            display: flex; align-items: center; justify-content: center; 
-            gap: 25px; max-width: 1000px; margin: 0 auto; 
+        /* --- HEADER DIVIDIDO --- */
+        .header-split {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+            gap: 40px;
         }
-        .logo-icon { width: 150px; height: auto; filter: drop-shadow(0 0 15px rgba(112,0,204,0.4)); }
-        .logo-texts { text-align: left; }
+
+        /* Lado Izquierdo: Branding */
+        .brand-side {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .logo-icon { width: 120px; height: auto; filter: drop-shadow(0 0 15px rgba(112,0,204,0.4)); }
         .logo-texts h1 { 
-            font-family: 'Montserrat', sans-serif; font-size: 4.5rem; 
+            font-family: 'Montserrat', sans-serif; font-size: 2.8rem; 
             line-height: 0.85; text-transform: uppercase; font-weight: 800;
         }
-        .logo-texts h1 span:first-child { color: var(--naranja); }
-        .logo-texts .sub-title { 
-            font-size: 1.2rem; letter-spacing: 2px; color: #bbb; 
-            margin-top: 15px; font-weight: 400; text-transform: uppercase;
+        .logo-texts h1 span { color: var(--naranja); }
+        .sub-title { 
+            font-size: 1rem; color: #bbb; margin-top: 8px; 
+            font-weight: 400; letter-spacing: 0.5px;
         }
 
-        /* --- WRAPPER --- */
+        /* Lado Derecho: Mensaje */
+        .message-side {
+            text-align: right;
+            max-width: 480px;
+        }
+        .message-side h2 {
+            font-family: 'Montserrat';
+            font-size: 1.4rem;
+            color: #fff;
+            text-transform: uppercase;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+        .message-side p {
+            font-family: 'Caveat';
+            font-size: 2rem;
+            color: var(--naranja);
+            line-height: 1;
+        }
+
+        /* --- CONTENIDO PRINCIPAL --- */
         .main-wrapper { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        section { margin-bottom: 100px; }
+        section { margin-bottom: 60px; }
 
-        /* --- SECCIÓN FRASES (NUEVA) --- */
-        .hero-statement {
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(to right, transparent, rgba(255,127,80,0.1), transparent);
-            margin: 40px 0;
+        .hero-box {
+            text-align: center; background: var(--cristal);
+            padding: 40px 30px; border-radius: 25px; border: 1px solid rgba(255,127,80,0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
-        .hero-statement h2 {
-            font-family: 'Montserrat'; font-size: 2rem; color: #fff;
-            text-transform: uppercase; letter-spacing: -1px;
-        }
-        .hero-statement p {
-            font-family: 'Caveat'; font-size: 2.2rem; color: var(--naranja);
-            margin-top: 5px;
-        }
-
-        /* --- SECCIÓN SOLUCIÓN --- */
-        .solucion-box {
-            background: var(--cristal);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 30px; padding: 50px; text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-        .solucion-box h3 { font-family: 'Montserrat'; font-size: 2.5rem; margin-bottom: 15px; }
-        .solucion-box h3 span { color: var(--naranja); }
         
-        .solucion-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 40px;
+        .cta-button {
+            display: inline-block; background: var(--naranja); color: #fff;
+            padding: 14px 35px; border-radius: 50px; text-decoration: none;
+            font-weight: 700; text-transform: uppercase; margin-top: 20px;
+            transition: 0.3s ease;
         }
-        .solucion-item {
-            background: rgba(0,0,0,0.3); padding: 30px; border-radius: 20px;
-            text-align: left; border-bottom: 3px solid var(--violeta-vibrante);
-            transition: 0.3s;
-        }
-        .solucion-item:hover { transform: scale(1.02); background: rgba(0,0,0,0.5); }
-        .solucion-item i { font-size: 1.5rem; color: var(--naranja); margin-bottom: 15px; display: block; }
-        .solucion-item h4 { margin-bottom: 10px; font-size: 1.1rem; text-transform: uppercase; }
-        .solucion-item p { font-size: 0.9rem; color: #aaa; }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(255,127,80,0.4); }
 
-        /* --- SERVICIOS --- */
-        .info h2 { font-family: 'Montserrat'; font-size: 2.5rem; color: var(--naranja); margin-bottom: 40px; }
-        .servicios { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
-        .servicio {
-            background: var(--cristal); padding: 40px 25px; border-radius: 20px;
-            text-decoration: none; color: inherit; transition: 0.3s; border: 1px solid transparent;
+        .card {
+            background: rgba(255,255,255,0.03); padding: 30px; border-radius: 18px;
+            border-left: 5px solid var(--violeta-vibrante); margin-bottom: 25px;
         }
-        .servicio:hover { border-color: var(--naranja); background: rgba(255,255,255,0.08); transform: translateY(-10px); }
-        .servicio i { font-size: 2.5rem; color: var(--naranja); margin-bottom: 20px; }
-        .servicio h3 { margin-bottom: 10px; font-family: 'Montserrat'; }
+        .card h4 { color: var(--naranja); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* --- DETALLES --- */
-        .detalle-servicio {
-            background: #fff; color: #222; padding: 40px; border-radius: 20px;
-            margin-bottom: 30px; text-align: left; border-left: 10px solid var(--naranja);
+        .servicios-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
         }
-        .detalle-servicio h3 { color: var(--fondo-oscuro); font-family: 'Montserrat'; margin-bottom: 15px; }
-        .detalle-servicio ul { list-style: none; margin-top: 20px; }
-        .detalle-servicio ul li { margin-bottom: 10px; padding-left: 30px; position: relative; }
-        .detalle-servicio ul li::before { 
-            content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
-            position: absolute; left: 0; color: var(--violeta-vibrante);
+        .ser-item {
+            background: var(--cristal); padding: 25px; border-radius: 18px; text-align: center;
+            border: 1px solid rgba(255,255,255,0.05); transition: 0.3s;
         }
+        .ser-item:hover { border-color: var(--naranja); background: rgba(255,255,255,0.08); }
+        .ser-item i { font-size: 2rem; color: var(--naranja); margin-bottom: 12px; display: block; }
+        .ser-item span { font-weight: 600; font-size: 0.85rem; text-transform: uppercase; }
 
         /* --- FOOTER --- */
-        footer { background: #05000a; padding: 80px 20px 40px; border-top: 5px solid var(--naranja); }
-        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; max-width: 1100px; margin: 0 auto; }
-        .footer-col h4 { color: var(--naranja); margin-bottom: 25px; font-family: 'Montserrat'; text-transform: uppercase; }
-        .social-icons { margin-top: 20px; display: flex; gap: 20px; }
-        .social-icons a { font-size: 1.8rem; color: #fff; transition: 0.3s; }
-        .social-icons a:hover { color: var(--naranja); transform: translateY(-5px); }
+        footer { background: #05000a; padding: 50px 20px; border-top: 4px solid var(--naranja); text-align: center; }
+        .social-icons { margin: 25px 0; display: flex; justify-content: center; gap: 30px; }
+        .social-icons a { font-size: 2rem; color: #fff; transition: 0.3s; }
+        .social-icons a:hover { color: var(--naranja); transform: scale(1.1); }
 
-        #back-to-top {
-            position: fixed; bottom: 30px; right: 30px; background: var(--naranja);
-            color: #fff; width: 50px; height: 50px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            text-decoration: none; opacity: 0; visibility: hidden; transition: 0.3s; z-index: 3000;
-        }
-
+        /* --- RESPONSIVE MÓVIL --- */
         @media (max-width: 768px) {
-            .logo-container { flex-direction: column; text-align: center; }
-            .logo-texts { text-align: center; }
-            .logo-texts h1 { font-size: 3rem; }
-            .solucion-grid { grid-template-columns: 1fr; }
-            .hero-statement h2 { font-size: 1.4rem; }
-            .main-nav ul { gap: 15px; }
+            .header-split {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+                gap: 30px;
+            }
+            .brand-side { flex-direction: column; gap: 15px; }
+            .message-side { text-align: center; }
+            .logo-texts h1 { font-size: 2.4rem; }
+            .message-side p { font-size: 1.7rem; }
+            .logo-icon { width: 100px; }
         }
     </style>
 </head>
@@ -158,162 +157,71 @@
 
     <nav class="main-nav">
         <ul>
-            <li><a href="#solucion">Nuestra Misión</a></li>
-            <li><a href="#servicios-section">Servicios</a></li>
-            <li><a href="#quienes-somos">Nosotros</a></li>
-            <li><a href="#contacto-footer">Contacto</a></li>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#mision">Misión</a></li>
+            <li><a href="#contacto">Contacto</a></li>
         </ul>
     </nav>
 
-    <header>
-        <div class="logo-container">
+    <header class="header-split" id="inicio">
+        <div class="brand-side">
             <img src="logo.png" alt="Digital Carmelo" class="logo-icon"> 
             <div class="logo-texts">
                 <h1><span>Digital</span><br>Carmelo</h1>
-                <p class="sub-title">Agencia Digital</p>
+                <p class="sub-title">Potenciador de Emprendedores</p>
             </div>
+        </div>
+
+        <div class="message-side">
+            <h2>Creada por emprendedores para emprendedores</h2>
+            <p>Entendemos tu camino.</p>
         </div>
     </header>
 
-    <div class="hero-statement">
-        <h2>Creada por emprendedores para emprendedores</h2>
-        <p>Entendemos tu camino porque también lo recorremos.</p>
-    </div>
-
     <main class="main-wrapper">
         
-        <section id="solucion">
-            <div class="solucion-box">
-                <h3>Potenciamos lo que <span>haces</span></h3>
-                <p style="font-size: 1.2rem; opacity: 0.8; max-width: 700px; margin: 0 auto;">Simplificamos lo que te está frenando para que pongas el foco donde realmente importa: <strong>tu crecimiento.</strong></p>
-                
-                <div class="solucion-grid">
-                    <div class="solucion-item">
-                        <i class="fas fa-bolt"></i>
-                        <h4>Velocidad Digital</h4>
-                        <p>No esperes semanas. Resolvemos tus necesidades de diseño y comunicación en tiempo récord.</p>
-                    </div>
-                    <div class="solucion-item">
-                        <i class="fas fa-hand-holding-heart"></i>
-                        <h4>Hecho a tu Medida</h4>
-                        <p>No creemos en soluciones genéricas. Adaptamos cada diseño a la identidad real de tu proyecto.</p>
-                    </div>
-                    <div class="solucion-item">
-                        <i class="fas fa-layer-group"></i>
-                        <h4>Todo en un solo lugar</h4>
-                        <p>Desde tu logo hasta tus archivos de producción. Una agencia digital que habla tu mismo idioma.</p>
-                    </div>
-                    <div class="solucion-item">
-                        <i class="fas fa-rocket"></i>
-                        <h4>Crecimiento Real</h4>
-                        <p>Nuestras herramientas están diseñadas para que vender sea más fácil y profesional.</p>
-                    </div>
-                </div>
+        <section class="hero-box">
+            <h2 style="color: var(--naranja); font-family: 'Montserrat'; font-size: 1.6rem; margin-bottom: 12px;">🌟 ¿SOS EMPRENDEDOR?</h2>
+            <p style="font-size: 1.1rem;">¡Digital Carmelo te brinda el diseño listo!</p>
+            <a href="https://wa.me/541134364468" class="cta-button" target="_blank">¡ CONSULTANOS !</a>
+        </section>
+
+        <section id="mision">
+            <div class="card">
+                <h4>¿Te sentís agobiado?</h4>
+                <p>Tenés un emprendimiento y no sabés o no tenés el tiempo, los dispositivos o simplemente la época del año te agobia... <strong>¡En Digital Carmelo te ayudamos con eso!</strong></p>
+            </div>
+            <div class="card" style="border-left-color: var(--naranja);">
+                <h4>Vos soñás, nosotros diseñamos</h4>
+                <p>Creamos los recursos que tu negocio necesita: logos, invitaciones, mockups, PNGs ¡y mucho más!</p>
             </div>
         </section>
 
-        <section id="servicios-section" class="info">
-            <h2>Nuestras Herramientas</h2>
-            <div class="servicios">
-                <a href="#detalles-invitaciones" class="servicio">
-                    <i class="fas fa-envelope-open-text"></i>
-                    <h3>Invitaciones</h3>
-                    <p>Digitales, rápidas y listas para enviar.</p>
-                </a>
-                <a href="#detalles-sublimacion" class="servicio">
-                    <i class="fas fa-mug-hot"></i>
-                    <h3>Sublimación</h3>
-                    <p>Diseños listos para estampar.</p>
-                </a>
-                <a href="#detalles-png" class="servicio">
-                    <i class="fas fa-file-image"></i>
-                    <h3>PNGs</h3>
-                    <p>Recursos con transparencia total.</p>
-                </a>
-                <a href="#detalles-logotipos" class="servicio">
-                    <i class="fas fa-crown"></i>
-                    <h3>Branding</h3>
-                    <p>Logotipos que crean identidad.</p>
-                </a>
+        <section id="servicios">
+            <h3 style="text-align:center; font-family:'Montserrat'; margin-bottom:25px; text-transform: uppercase; font-size: 1.2rem; letter-spacing: 1px;">Recursos para tu negocio</h3>
+            <div class="servicios-grid">
+                <div class="ser-item"><i class="fas fa-gem"></i><span>Logos</span></div>
+                <div class="ser-item"><i class="fas fa-envelope-open-text"></i><span>Invitaciones</span></div>
+                <div class="ser-item"><i class="fas fa-layer-group"></i><span>Mockups</span></div>
+                <div class="ser-item"><i class="fas fa-file-image"></i><span>PNGs</span></div>
             </div>
         </section>
 
-        <section id="detalles-servicios-main">
-            <div id="detalles-invitaciones" class="detalle-servicio">
-                <h3>Invitaciones Digitales</h3>
-                <p>La solución moderna para tus eventos. Envía por WhatsApp y ahorra costos innecesarios.</p>
-                <ul>
-                    <li>Optimizado para visualización móvil.</li>
-                    <li>Diseños exclusivos según tu temática.</li>
-                </ul>
-            </div>
-
-            <div id="detalles-sublimacion" class="detalle-servicio">
-                <h3>Diseños para Sublimación</h3>
-                <p>Proveemos archivos de alta calidad técnica para que tus productos finales se vean impecables.</p>
-                <ul>
-                    <li>Formato de color profesional (CMYK).</li>
-                    <li>Vectores escalables.</li>
-                </ul>
-            </div>
-
-            <div id="detalles-logotipos" class="detalle-servicio">
-                <h3>Identidad Visual y Logotipos</h3>
-                <p>Tu logo es la cara de tu negocio. Nos aseguramos de que transmita profesionalismo desde el primer segundo.</p>
-                <ul>
-                    <li>Kit de archivos completo (.AI, .PNG, .JPG).</li>
-                    <li>Paleta de colores sugerida.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="quienes-somos" style="text-align:center;">
-            <h2 style="font-family: 'Montserrat'; font-size: 2.2rem; color: var(--naranja);">¿Por qué Digital Carmelo?</h2>
-            <p style="font-size: 1.2rem; margin-top: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">Porque nacimos de la misma necesidad que tienes hoy: <strong>tiempo y profesionalismo.</strong> Somos tu socio digital para que nada te detenga.</p>
+        <section style="background: linear-gradient(135deg, var(--violeta-vibrante) 0%, #3b0066 100%); padding: 40px 30px; border-radius: 25px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
+            <h2 style="font-family: 'Montserrat'; font-size: 1.3rem; margin-bottom: 15px;">¡LO IMPORTANTE ES AYUDARTE A CRECER!</h2>
+            <p style="font-size: 0.95rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">No necesitás gastar en membresías ni esperar a tener tiempo para aprender a usar apps. ¡Que nada limite tus ganas de vender!</p>
         </section>
 
     </main>
 
-    <footer id="contacto-footer">
-        <div class="footer-content">
-            <div class="footer-col">
-                <h4>Digital Carmelo</h4>
-                <p style="color: #888; font-size: 0.9rem;">Potenciamos lo que haces, simplificamos lo que te está frenando.</p>
-                <div class="social-icons">
-                    <a href="https://www.instagram.com/digitalcarmelo/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://wa.me/541134364468" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Agencia</h4>
-                <ul style="font-size: 0.9rem;">
-                    <li><a href="#top" style="text-decoration:none; color:#aaa;">Inicio</a></li>
-                    <li><a href="#solucion" style="text-decoration:none; color:#aaa;">Misión</a></li>
-                    <li><a href="#servicios-section" style="text-decoration:none; color:#aaa;">Servicios</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contactanos</h4>
-                <p style="font-size: 0.9rem; color:#aaa;"><i class="fas fa-envelope" style="color:var(--naranja)"></i> 1digitalcarmelo@gmail.com</p>
-                <p style="font-size: 0.9rem; color:#aaa;"><i class="fas fa-phone" style="color:var(--naranja)"></i> +54 11 3436 4468</p>
-            </div>
+    <footer id="contacto">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/digitalcarmelo/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/541134364468" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
-        <div style="text-align: center; margin-top: 50px; opacity: 0.3; font-size: 0.7rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
-            © 2026 Digital Carmelo — Creada por emprendedores para emprendedores.
-        </div>
+        <p style="font-size: 0.75rem; opacity: 0.5;">© 2026 Digital Carmelo | Buenos Aires, Argentina</p>
     </footer>
 
-    <a href="#top" id="back-to-top"><i class="fas fa-arrow-up"></i></a>
-
-    <script>
-        const btn = document.getElementById("back-to-top");
-        window.onscroll = function() {
-            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
-                btn.style.opacity = "1"; btn.style.visibility = "visible";
-            } else {
-                btn.style.opacity = "0"; btn.style.visibility = "hidden";
-            }
-        };
-    </script>
 </body>
 </html>
