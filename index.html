@@ -54,7 +54,6 @@
             text-transform: uppercase; margin-top: 8px; letter-spacing: 1px;
         }
 
-        /* LÍNEA DIVISORIA (Invisible en PC, visible en Móvil) */
         .mobile-divider { display: none; }
 
         .header-message { text-align: right; max-width: 500px; }
@@ -70,117 +69,145 @@
             line-height: 1.2;
         }
 
-        /* --- SECCIONES --- */
-        .main-wrapper { max-width: 1100px; margin: 0 auto; padding: 20px; }
-
-        .our-story { text-align: center; margin-bottom: 80px; padding: 40px 20px; }
-        .our-story h2 {
-            font-family: 'Caveat', cursive; font-size: 3.5em;
-            color: #ff7f50; margin-bottom: 25px; line-height: 1.1;
-        }
-        .our-story p { font-size: 1.4em; line-height: 1.6; }
-
-        .info {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 20px; padding: 50px 40px;
-            backdrop-filter: blur(10px); margin-bottom: 60px;
+        /* --- SECCIÓN HISTORIA (NUEVO ESTILO) --- */
+        .story-banner {
+            background: linear-gradient(135deg, rgba(255, 127, 80, 0.2), rgba(75, 0, 130, 0.4));
+            padding: 60px 20px;
+            margin: 40px 0;
             text-align: center;
-            border: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
+        .story-banner h2 {
+            font-family: 'Caveat', cursive;
+            font-size: 3.5em;
+            color: #fff; /* Texto en blanco como pediste */
+            max-width: 900px;
+            margin: 0 auto 20px;
+            line-height: 1.1;
+        }
+        .story-banner p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+
+        /* --- SERVICIOS DESPLEGABLES --- */
+        .main-wrapper { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
         .info h2 {
             font-family: 'Montserrat', sans-serif; font-size: 2.5em;
-            color: #ff7f50; margin-bottom: 30px; text-transform: uppercase;
+            color: #ff7f50; margin-bottom: 40px; text-align: center;
+            text-transform: uppercase;
         }
 
-        /* SERVICIOS ESTILO ANTERIOR */
-        .servicios {
+        .servicios-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
-        .servicio {
-            background: rgba(255, 255, 255, 0.12);
-            padding: 35px 20px; border-radius: 18px;
-            transition: 0.4s ease;
-            border-bottom: 4px solid transparent;
-        }
-        .servicio:hover { 
-            transform: translateY(-12px); 
-            background: rgba(255, 255, 255, 0.18);
-            border-bottom: 4px solid #ff7f50;
-        }
-        .servicio i { font-size: 3em; color: #ff7f50; margin-bottom: 20px; display: block; }
-        .servicio h3 { font-size: 1.3em; margin-bottom: 12px; font-family: 'Montserrat'; }
-        .servicio a { color: inherit; text-decoration: none; }
 
-        /* DETALLES */
-        .detalle-servicio {
-            background: #ffffff; color: #222;
-            border-left: 8px solid #ff7f50;
-            padding: 35px; margin: 40px 0;
-            border-radius: 12px; text-align: left;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        .servicio-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
         }
-        .detalle-servicio h3 { color: #4B0082; font-size: 1.8em; margin-bottom: 15px; }
-        .detalle-servicio ul { list-style: none; margin-top: 15px; }
-        .detalle-servicio li { margin-bottom: 10px; position: relative; padding-left: 30px; font-weight: 500; }
-        .detalle-servicio li::before { 
+
+        .servicio-header {
+            padding: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: background 0.3s;
+        }
+
+        .servicio-header:hover { background: rgba(255, 255, 255, 0.12); }
+
+        .servicio-header i { font-size: 2em; color: #ff7f50; width: 40px; text-align: center; }
+        
+        .servicio-header h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2em;
+            flex-grow: 1;
+        }
+
+        .servicio-header .arrow {
+            font-size: 1em;
+            transition: transform 0.3s;
+        }
+
+        /* Contenido oculto por defecto */
+        .servicio-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0 25px;
+        }
+
+        /* Clase que se activará con JS */
+        .servicio-card.active .servicio-content {
+            max-height: 500px;
+            padding: 20px 25px 30px;
+        }
+
+        .servicio-card.active .arrow { transform: rotate(180deg); }
+
+        .servicio-content ul { list-style: none; margin-top: 15px; }
+        .servicio-content li { 
+            margin-bottom: 8px; 
+            position: relative; 
+            padding-left: 25px; 
+            font-size: 0.95em;
+        }
+        .servicio-content li::before { 
             content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
-            position: absolute; left: 0; color: #ff7f50; 
+            position: absolute; left: 0; color: #ff7f50; font-size: 0.8em;
         }
 
-        /* --- FOOTER REFORMADO --- */
+        /* --- FOOTER --- */
         footer {
             background-color: #05000a; color: #e0e0e0;
             padding: 80px 20px 40px; border-top: 8px solid #ff7f50;
+            margin-top: 80px;
         }
         .footer-grid {
             display: grid; grid-template-columns: 1.5fr 1fr 1fr;
             max-width: 1200px; margin: 0 auto; gap: 60px;
         }
-        .footer-col h4 { color: #ff7f50; margin-bottom: 25px; font-family: 'Montserrat'; font-size: 1.4em; }
-        .footer-col p { line-height: 1.8; opacity: 0.8; }
-        .social-links { display: flex; gap: 20px; margin-top: 20px; }
+        .footer-col h4 { color: #ff7f50; margin-bottom: 25px; font-family: 'Montserrat'; }
+        .social-links { display: flex; gap: 15px; margin-top: 20px; }
         .social-links a { 
-            color: #fff; font-size: 2em; transition: 0.3s; 
-            background: rgba(255,255,255,0.1); width: 50px; height: 50px;
-            display: flex; align-items: center; justify-content: center; border-radius: 50%;
+            color: #fff; font-size: 1.5em; background: rgba(255,255,255,0.1); 
+            width: 45px; height: 45px; display: flex; align-items: center; 
+            justify-content: center; border-radius: 50%; text-decoration: none;
         }
-        .social-links a:hover { background: #ff7f50; transform: scale(1.1); }
 
-        /* VOLVER ARRIBA */
         #back-to-top {
             position: fixed; bottom: 30px; right: 30px;
             background: #ff7f50; color: #00123a;
-            width: 55px; height: 55px; border-radius: 50%;
+            width: 50px; height: 50px; border-radius: 50%;
             display: flex; justify-content: center; align-items: center;
-            text-decoration: none; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-decoration: none; z-index: 1000;
         }
 
         /* --- RESPONSIVE --- */
-        @media (max-width: 992px) {
-            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-            .social-links { justify-content: center; }
-        }
-
         @media (max-width: 768px) {
-            header { flex-direction: column; text-align: center; gap: 0; }
+            header { flex-direction: column; text-align: center; }
             .brand-container { flex-direction: column; margin-bottom: 20px; }
-            
-            /* LA LÍNEA QUE TE GUSTABA */
             .mobile-divider {
-                display: block;
-                width: 80%;
-                height: 2px;
+                display: block; width: 80%; height: 2px;
                 background: linear-gradient(to right, transparent, #ff7f50, transparent);
                 margin: 20px auto;
-                box-shadow: 0 0 10px rgba(255,127,80,0.5);
             }
-            
             .header-message { text-align: center; }
-            .logo-texts h1 { font-size: 2.8em; }
-            .logo-texts .sub-title { font-size: 1em; }
-            .header-message p { font-size: 1.7em; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .social-links { justify-content: center; }
+            .story-banner h2 { font-size: 2.5em; }
         }
     </style>
 </head>
@@ -190,13 +217,13 @@
 
     <nav class="main-nav">
         <ul>
-            <li><a href="#nuestra-historia">Nuestra Historia</a></li>
+            <li><a href="#inicio">Inicio</a></li>
             <li><a href="#servicios-section">Servicios</a></li>
             <li><a href="#contacto-footer">Contacto</a></li>
         </ul>
     </nav>
 
-    <header>
+    <header id="inicio">
         <div class="brand-container">
             <img src="logo.png" alt="Digital Carmelo" class="logo-icon"> 
             <div class="logo-texts">
@@ -204,126 +231,158 @@
                 <p class="sub-title">Potenciador de emprendedores</p>
             </div>
         </div>
-
         <div class="mobile-divider"></div>
-
         <div class="header-message">
             <h2>Creada por emprendedores para emprendedores</h2>
             <p>Entendemos tu camino.<br>Juntos, seamos el fuego que te impulse a seguir adelante.</p>
         </div>
     </header>
 
-    <main class="main-wrapper">
-        
-        <section id="nuestra-historia" class="our-story">
-            <h2>"Todo nació de una idea simple:<br>Hacerle la vida digital más fácil a otros emprendedores."</h2>
-            <p>Sabemos lo que es empezar desde cero, sin tiempo o recursos para el diseño.<br>
-            Por eso, creamos Digital Carmelo: soluciones prácticas, accesibles y listas para usar, para que tú solo te concentres en vender.</p>
-        </section>
+    <section class="story-banner">
+        <h2>"Todo nació de una idea simple: Hacerle la vida digital más fácil a otros emprendedores."</h2>
+        <p>Sabemos lo que es empezar desde cero, sin tiempo o recursos para el diseño.<br>
+        Por eso, creamos Digital Carmelo: soluciones prácticas y listas para usar.</p>
+    </section>
 
+    <main class="main-wrapper">
         <section id="servicios-section" class="info">
             <h2>Nuestros Servicios</h2>
-            <div class="servicios">
-                <div class="servicio">
-                    <i class="fas fa-envelope-open-text"></i>
-                    <a href="#detalles-invitaciones"><h3>Invitaciones digitales</h3></a>
-                    <p>Diseños exclusivos listos para compartir.</p>
-                </div>
-                <div class="servicio">
-                    <i class="fas fa-mug-hot"></i>
-                    <a href="#detalles-sublimacion"><h3>Sublimaciones</h3></a>
-                    <p>Archivos de alta calidad para tus productos impresos.</p>
-                </div>
-                <div class="servicio">
-                    <i class="fas fa-file-image"></i>
-                    <a href="#detalles-png"><h3>PNGs Personalizados</h3></a>
-                    <p>Transparencias perfectas para potenciar tus fotos.</p>
-                </div>
-                <div class="servicio">
-                    <i class="fas fa-gem"></i>
-                    <a href="#detalles-logotipos"><h3>Logotipos</h3></a>
-                    <p>Identidad visual profesional para tu marca.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="detalles-servicios-main" class="info">
-            <h2 style="font-size: 2em;">Detalles y Procesos</h2>
             
-            <div id="detalles-invitaciones" class="detalle-servicio">
-                <h3><i class="fas fa-envelope-open-text"></i> Invitaciones Digitales</h3>
-                <p>La forma más rápida y elegante de invitar a tus clientes o amigos.</p>
-                <ul>
-                    <li>Entrega de bocetos iniciales para tu aprobación.</li>
-                    <li>Archivos livianos optimizados para WhatsApp.</li>
-                    <li>Diseños 100% adaptados a tu temática.</li>
-                </ul>
-            </div>
+            <div class="servicios-grid">
+                
+                <div class="servicio-card">
+                    <div class="servicio-header" onclick="toggleService(this)">
+                        <i class="fas fa-envelope-open-text"></i>
+                        <h3>Invitaciones Digitales</h3>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="servicio-content">
+                        <p>La forma más rápida y elegante de invitar a tus eventos.</p>
+                        <ul>
+                            <li>Entrega de bocetos iniciales para tu aprobación.</li>
+                            <li>Archivos livianos optimizados para WhatsApp y redes.</li>
+                            <li>Diseños 100% personalizados según tu temática.</li>
+                        </ul>
+                    </div>
+                </div>
 
-            <div id="detalles-sublimacion" class="detalle-servicio">
-                <h3><i class="fas fa-tshirt"></i> Diseños para Sublimación</h3>
-                <p>Archivos técnicos para que tus estampados salgan perfectos.</p>
-                <ul>
-                    <li>Optimización de colores para una impresión vibrante.</li>
-                    <li>Escalado sin pérdida de calidad.</li>
-                    <li>Mockups digitales para que promociones tus productos.</li>
-                </ul>
-            </div>
+                <div class="servicio-card">
+                    <div class="servicio-header" onclick="toggleService(this)">
+                        <i class="fas fa-mug-hot"></i>
+                        <h3>Diseños para Sublimación</h3>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="servicio-content">
+                        <p>Archivos técnicos listos para que tus estampados brillen.</p>
+                        <ul>
+                            <li>Optimización de colores para una impresión vibrante.</li>
+                            <li>Escalado sin pérdida de calidad (Vectores).</li>
+                            <li>Mockups de regalo para promocionar tus productos.</li>
+                        </ul>
+                    </div>
+                </div>
 
-            <div id="detalles-png" class="detalle-servicio">
-                <h3><i class="fas fa-file-image"></i> PNG Personalizados</h3>
-                <p>Imágenes sin fondo para que edites como un profesional en Canva o apps.</p>
-                <ul>
-                    <li>Recortes precisos sin bordes blancos molestos.</li>
-                    <li>Creación de stickers y sellos digitales.</li>
-                    <li>Resolución apta para redes sociales y web.</li>
-                </ul>
-            </div>
+                <div class="servicio-card">
+                    <div class="servicio-header" onclick="toggleService(this)">
+                        <i class="fas fa-gem"></i>
+                        <h3>Diseño de Logotipos</h3>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="servicio-content">
+                        <p>Creamos la base visual que tu marca necesita para crecer.</p>
+                        <ul>
+                            <li>Presentación de 3 conceptos únicos.</li>
+                            <li>Entrega en formatos editables y PNG transparente.</li>
+                            <li>Guía básica de colores y tipografías.</li>
+                        </ul>
+                    </div>
+                </div>
 
-            <div id="detalles-logotipos" class="detalle-servicio">
-                <h3><i class="fas fa-gem"></i> Diseño de Logotipos</h3>
-                <p>El primer gran paso para que tu emprendimiento sea una marca.</p>
-                <ul>
-                    <li>Presentación de 3 conceptos distintos.</li>
-                    <li>Entrega en formatos editables y PNG transparente.</li>
-                    <li>Asesoría en combinación de tipografías y colores.</li>
-                </ul>
+                <div class="servicio-card">
+                    <div class="servicio-header" onclick="toggleService(this)">
+                        <i class="fas fa-users-cog"></i>
+                        <h3>Community Manager</h3>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="servicio-content">
+                        <p>Gestionamos tu presencia online para que vos te ocupes de vender.</p>
+                        <ul>
+                            <li>Planificación de contenido estratégico.</li>
+                            <li>Diseño de posts e historias atractivas.</li>
+                            <li>Atención y respuesta a tu comunidad.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="servicio-card">
+                    <div class="servicio-header" onclick="toggleService(this)">
+                        <i class="fas fa-camera-retro"></i>
+                        <h3>Ayuda a Fotógrafos</h3>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="servicio-content">
+                        <p>Edición profesional para que tus fotos hablen por sí solas.</p>
+                        <ul>
+                            <li>Restauración y mejora de fotos antiguas o dañadas.</li>
+                            <li>Creación de clips musicales y videos con fotos.</li>
+                            <li>Edición avanzada, retoque y corrección de color.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="servicio-card">
+                    <div class="servicio-header" onclick="toggleService(this)">
+                        <i class="fas fa-file-image"></i>
+                        <h3>PNGs Personalizados</h3>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="servicio-content">
+                        <p>Imágenes sin fondo para editar como un profesional.</p>
+                        <ul>
+                            <li>Recortes precisos para usar en Canva o apps.</li>
+                            <li>Creación de stickers y sellos digitales exclusivos.</li>
+                            <li>Alta resolución garantizada.</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </section>
-
     </main>
 
     <footer id="contacto-footer">
         <div class="footer-grid">
             <div class="footer-col">
                 <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                    <img src="logo.png" style="width: 60px;" alt="">
+                    <img src="logo.png" style="width: 50px;" alt="">
                     <h4 style="margin-bottom: 0;">Digital Carmelo</h4>
                 </div>
-                <p>Potenciamos el camino del emprendedor con herramientas visuales que venden. No más agobio, solo diseño listo para usar.</p>
+                <p>Potenciamos tu emprendimiento con herramientas visuales que venden. Simplificamos tu camino digital.</p>
             </div>
-            
             <div class="footer-col">
                 <h4>Navegación</h4>
-                <p><a href="#nuestra-historia" style="color: #fff; text-decoration: none;">Nuestra Historia</a></p>
-                <p><a href="#quienes-somos" style="color: #fff; text-decoration: none;">Quiénes Somos</a></p>
-                <p><a href="#servicios-section" style="color: #fff; text-decoration: none;">Nuestros Servicios</a></p>
+                <p><a href="#inicio" style="color:#fff; text-decoration:none;">Inicio</a></p>
+                <p><a href="#servicios-section" style="color:#fff; text-decoration:none;">Servicios</a></p>
             </div>
-
             <div class="footer-col">
-                <h4>Conectemos</h4>
-                <p><i class="fas fa-envelope" style="color: #ff7f50;"></i> 1digitalcarmelo@gmail.com</p>
-                <p><i class="fas fa-phone" style="color: #ff7f50;"></i> +54 11 3436 4468</p>
+                <h4>Contacto</h4>
+                <p><i class="fas fa-envelope" style="color:#ff7f50;"></i> 1digitalcarmelo@gmail.com</p>
                 <div class="social-links">
                     <a href="https://www.instagram.com/digitalcarmelo/" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="https://wa.me/541134364468" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85em; opacity: 0.5;">
-            <p>© 2026 Digital Carmelo — Buenos Aires, Argentina</p>
-        </div>
     </footer>
+
+    <script>
+        function toggleService(element) {
+            const card = element.parentElement;
+            // Cierra otros si se desea (opcional)
+            // document.querySelectorAll('.servicio-card').forEach(c => { if(c !== card) c.classList.remove('active'); });
+            card.classList.toggle('active');
+        }
+    </script>
 
 </body>
 </html>
