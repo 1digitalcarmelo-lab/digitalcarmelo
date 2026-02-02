@@ -6,49 +6,48 @@
   <title>Propaganda Digital Bandas</title>
 
   <style>
-    /* RESET BÁSICO */
-    * {
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      background-color: #0f0f0f;
+      display: flex;
+      justify-content: center;
+      font-family: Arial, sans-serif;
     }
 
-    body {
-      background-color: #1a1a1a;
-      font-family: sans-serif;
-    }
-
-    /* CONTENEDOR PRINCIPAL */
-    .main-container {
+    /* Contenedor estilo "pantalla de celular" */
+    .mobile-frame {
       width: 100%;
-      padding: 10px;
+      max-width: 390px; /* ancho real de celular moderno */
+      background-color: #000;
     }
 
-    /* EMBED DE CANVA */
     .canva-embed {
       position: relative;
       width: 100%;
       height: 0;
-      padding-top: 224.8902%; /* proporción original */
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-      margin: 20px auto;
+      padding-top: 224.8902%;
       overflow: hidden;
-      border-radius: 8px;
     }
 
     .canva-embed iframe {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      border: 0;
+      border: none;
     }
 
-    /* DESKTOP: recién acá limitamos ancho */
-    @media (min-width: 900px) {
-      .main-container {
-        max-width: 600px;
-        margin: 0 auto;
+    /* En PC: centrado y cómodo */
+    @media (min-width: 768px) {
+      body {
+        padding: 40px 0;
+      }
+
+      .mobile-frame {
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        border-radius: 12px;
       }
     }
   </style>
@@ -56,11 +55,11 @@
 
 <body>
 
-  <div class="main-container">
+  <div class="mobile-frame">
     <div class="canva-embed">
       <iframe 
-        loading="lazy"
         src="https://www.canva.com/design/DAG-H_4PkGw/4Pk4HdVQeeJGpC0NKSNUPA/view?embed"
+        loading="lazy"
         allowfullscreen>
       </iframe>
     </div>
