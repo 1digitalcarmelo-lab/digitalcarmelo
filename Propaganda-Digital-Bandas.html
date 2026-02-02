@@ -14,14 +14,12 @@
       font-family: Arial, sans-serif;
     }
 
-    /* contenedor general */
     .wrapper {
       width: 100%;
-      max-width: 720px; /* 👈 se ve bien en PC */
+      max-width: 720px;
       padding: 16px;
     }
 
-    /* bloque canva vertical */
     .canva-block {
       position: relative;
       width: 100%;
@@ -29,6 +27,7 @@
       padding-top: 177.77%; /* 1080x1920 */
       overflow: hidden;
       border-radius: 14px;
+      margin-bottom: 32px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.6);
     }
 
@@ -45,13 +44,27 @@
 <body>
 
   <div class="wrapper">
+
+    <!-- PÁGINA 1 -->
     <div class="canva-block">
-      <iframe
-        loading="lazy"
-        src="https://www.canva.com/design/DAHALgnyRrE/WAi0scHFfqovjRnJKPVR9Q/view?embed"
-        allowfullscreen>
-      </iframe>
+      <iframe src="https://www.canva.com/design/DAHALgnyRrE/WAi0scHFfqovjRnJKPVR9Q/view?embed" loading="lazy"></iframe>
     </div>
+
+    <!-- PÁGINA 2 -->
+    <div class="canva-block">
+      <iframe src="https://www.canva.com/design/DAHALsTUUX0/5SEx6inHG4E8_phO93xuDw/view?embed" loading="lazy"></iframe>
+    </div>
+
+    <!-- PÁGINA 3 -->
+    <div class="canva-block">
+      <iframe src="https://www.canva.com/design/DAHALlVPq3E/BDjkv_8MwfBsUX26dwwHBg/view?embed" loading="lazy"></iframe>
+    </div>
+
+    <!-- PÁGINA 4 -->
+    <div class="canva-block">
+      <iframe src="https://www.canva.com/design/DAHALlgUccM/dPG2_z3hmnG-50bhrWDpZg/view?embed" loading="lazy"></iframe>
+    </div>
+
   </div>
 
 </body>
