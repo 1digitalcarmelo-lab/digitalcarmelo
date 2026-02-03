@@ -7,7 +7,6 @@
   <title>Propaganda Digital Bandas | Digital Carmelo</title>
 
   <style>
-    /* RESET */
     * {
       margin: 0;
       padding: 0;
@@ -20,14 +19,12 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    /* CONTENEDOR GENERAL */
     .canva-wrapper {
       width: 100vw;
-      max-width: 430px; /* tamaño celu */
+      max-width: 430px;
       margin: 0 auto;
     }
 
-    /* SECCIÓN */
     .canva-section {
       width: 100%;
       height: 100vh;
@@ -35,17 +32,25 @@
       overflow: hidden;
     }
 
-    /* IFRAME */
     .canva-section iframe {
       width: 100%;
       height: 100%;
       border: none;
-      transform: scale(1.08);
-      transform-origin: center;
-      pointer-events: none; /* 💣 mata controles */
     }
 
-    /* PC = imita celular */
+    /* TAPA VISUAL DE CONTROLES (NO ROMPE CLICS) */
+    .canva-section::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 60px; /* zona controles Canva */
+      background: #000;
+      z-index: 10;
+      pointer-events: none;
+    }
+
     @media (min-width: 768px) {
       .canva-wrapper {
         max-width: 430px;
@@ -58,36 +63,20 @@
 
   <div class="canva-wrapper">
 
-    <!-- PAGINA 1 -->
     <section class="canva-section">
-      <iframe
-        src="https://www.canva.com/design/DAHALgnyRrE/WAi0scHFfqovjRnJKPVR9Q/view?embed"
-        allowfullscreen>
-      </iframe>
+      <iframe src="https://www.canva.com/design/DAHALgnyRrE/WAi0scHFfqovjRnJKPVR9Q/view?embed"></iframe>
     </section>
 
-    <!-- PAGINA 2 -->
     <section class="canva-section">
-      <iframe
-        src="https://www.canva.com/design/DAHALsTUUX0/5SEx6inHG4E8_phO93xuDw/view?embed"
-        allowfullscreen>
-      </iframe>
+      <iframe src="https://www.canva.com/design/DAHALsTUUX0/5SEx6inHG4E8_phO93xuDw/view?embed"></iframe>
     </section>
 
-    <!-- PAGINA 3 -->
     <section class="canva-section">
-      <iframe
-        src="https://www.canva.com/design/DAHALlVPq3E/BDjkv_8MwfBsUX26dwwHBg/view?embed"
-        allowfullscreen>
-      </iframe>
+      <iframe src="https://www.canva.com/design/DAHALlVPq3E/BDjkv_8MwfBsUX26dwwHBg/view?embed"></iframe>
     </section>
 
-    <!-- PAGINA 4 -->
     <section class="canva-section">
-      <iframe
-        src="https://www.canva.com/design/DAHALlgUccM/dPG2_z3hmnG-50bhrWDpZg/view?embed"
-        allowfullscreen>
-      </iframe>
+      <iframe src="https://www.canva.com/design/DAHALlgUccM/dPG2_z3hmnG-50bhrWDpZg/view?embed"></iframe>
     </section>
 
   </div>
